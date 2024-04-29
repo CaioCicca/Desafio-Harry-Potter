@@ -83,8 +83,3 @@ Contribuições
 
 Contribuições são bem-vindas! Se você encontrar algum bug ou quiser adicionar novas funcionalidades, sinta-se à vontade para abrir uma issue ou enviar uma solicitação pull.
 
-Licença
--------
-
-Este projeto está licenciado sob a Licença MIT - consulte o arquivo LICENSE para obter detalhes.
-
