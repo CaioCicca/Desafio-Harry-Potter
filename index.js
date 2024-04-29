@@ -31,15 +31,18 @@ app.put('/bruxos/:id', async (req, res) => {
         let { nome, idade, casa, habilidade, status_sangue, patrono } = req.body;
         status_sangue = status_sangue.toLowerCase();
         casa = casa.toLowerCase();
-        if (status_sangue === 'puro' && status_sangue === 'mestiço' && status_sangue === 'trouxa') {
-            if (casa === 'grifinoria' && casa === 'sonserina' && casa === 'lufa lufa' && casa === 'corvinal') {
+        
+        if (status_sangue === 'puro' || status_sangue === 'mestiço' || status_sangue === 'trouxa') {
+
+            if (casa === 'grifinoria' || casa === 'sonserina' || casa === 'lufa-lufa' || casa === 'corvinal') {
                 await poll.query('UPDATE bruxos SET nome = $1, idade = $2, casa = $3, habilidade = $4, status_sangue = $5, patrono = $6 WHERE id = $7', [nome, idade, casa, habilidade, status_sangue, patrono, id]);
                 res.status(200).send({ mensagem: 'Sucesso ao atualizar' });
             } else {
-                res.status(400).send({ mensagem: 'Casa invalida' });
+                res.status(400).send({ mensagem: 'Casa inválida' });
             }
+
         } else {
-            res.status(400).send({ mensagem: 'Status sanguineo invalido' });
+            res.status(400).send({ mensagem: 'Status sanguíneo inválido' });
         }
     } catch (error) {
         console.error('Erro ao atualizar', error);
@@ -52,21 +55,25 @@ app.post('/bruxos', async (req, res) => {
         let { nome, idade, casa, habilidade, status_sangue, patrono } = req.body;
         status_sangue = status_sangue.toLowerCase();
         casa = casa.toLowerCase();
-        if (status_sangue === 'puro' && status_sangue === 'mestiço' && status_sangue === 'trouxa') {
-            if (casa === 'grifinoria' && casa === 'sonserina' && casa === 'lufa lufa' && casa === 'corvinal') {
+        
+        if (status_sangue === 'puro' || status_sangue === 'mestiço' || status_sangue === 'trouxa') {
+
+            if (casa === 'grifinoria' || casa === 'sonserina' || casa === 'lufa lufa' || casa === 'corvinal') {
                 await poll.query('INSERT INTO bruxos (nome, idade, casa, habilidade, status_sangue, patrono) VALUES ($1, $2, $3, $4, $5, $6)', [nome, idade, casa, habilidade, status_sangue, patrono]);
-                res.status(201).send({ mensagem: 'Sucesso ao cadastrar o bruxo' })
+                res.status(201).send({ mensagem: 'Sucesso ao cadastrar o bruxo' });
             } else {
-                res.status(400).send({ mensagem: 'Casa invalida' });
+                res.status(400).send({ mensagem: 'Casa inválida' });
             }
         } else {
-            res.status(400).send({ mensagem: 'Status sanguineo invalido' });
+            res.status(400).send({ mensagem: 'Status sanguíneo inválido' });
         }
+        
     } catch (error) {
         console.error('Erro ao cadastrar o bruxo', error);
-        res.status(500).send('Erro ao cadastrar o bruxo');
+        res.status(500).send({ mensagem: 'Erro ao cadastrar o bruxo' });
     }
 });
+
 
 app.get('/bruxos/:id', async (req, res) => {
     try {
