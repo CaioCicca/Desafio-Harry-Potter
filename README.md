@@ -3,6 +3,8 @@ API do Banco de Dados de Hogwarts
 
 Bem-vindo à API do Banco de Dados de Hogwarts! Esta API permite gerenciar informações sobre bruxos e varinhas no mundo mágico de Harry Potter.
 
+<img src="/assets/images.jpg">
+
 Funcionalidades
 ---------------
 
